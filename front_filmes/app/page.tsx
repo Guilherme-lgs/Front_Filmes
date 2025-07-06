@@ -5,7 +5,9 @@ import Header from "@/components/Header"
 import HeroSection from "@/components/HeroSection"
 import FilmesSection from "@/components/FilmesSection"
 import PanosSection from "@/components/PanosSection"
-import FilmesPorIdSection from "@/components/FilmesPorIdSection"
+import ProductsSection from "@/components/ProductsSection"
+import PostsSection from "@/components/PostsSection"
+import UsersSection from "@/components/UsersSection"
 import Footer from "@/components/Footer"
 import LoadingSpinner from "@/components/LoadingSpinner"
 
@@ -142,7 +144,9 @@ export default function HomePage() {
         <HeroSection />
         <FilmesSection filmes={filmes} />
         <PanosSection panos={panos} />
-        <FilmesPorIdSection filmesPorId={filmesPorId} />
+        <ProductsSection />
+        <PostsSection />
+        <UsersSection />
       </main>
       <Footer />
 
@@ -151,6 +155,15 @@ export default function HomePage() {
           <p className="text-sm">{error}</p>
         </div>
       )}
+
+      <section className="prose prose-invert max-w-2xl mx-auto my-8 px-4">
+        <h1>Detalhes dos Filmes</h1>
+        <p>
+          Informações detalhadas, avaliações e estatísticas dos nossos filmes em
+          destaque
+        </p>
+        {/* ...restante do conteúdo... */}
+      </section>
     </div>
   )
 }
