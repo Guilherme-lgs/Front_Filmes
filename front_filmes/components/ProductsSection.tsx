@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type { Product } from "@/app/page"
-import ProductCard from "./ProductCard"
+import { motion } from "framer-motion";
+import { Product } from "@/types/product";
+import ProductCard from "./ProductCard";
 
 interface ProductsSectionProps {
-  products: Product[]
+  products: Product[];
 }
 
 export default function ProductsSection({ products }: ProductsSectionProps) {
   return (
-    <section id="products" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+    <section id="products" className="py-20 bg-gradient-to-b from-purple-50 to-pink-50">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -28,19 +28,20 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <ProductCard product={product} />
-            </motion.div>
-          ))}
+          {Array.isArray(products) &&
+            products.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
